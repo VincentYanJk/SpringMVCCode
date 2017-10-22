@@ -78,7 +78,6 @@ public class DispatchServlet extends HttpServlet {
 							+ method.getAnnotation(RequestMapping.class).value());
 					
 					methods.put(path+method.getAnnotation(RequestMapping.class).value(), method);
-					System.out.println("7777");
 				}
 			}
 			
@@ -98,19 +97,19 @@ public class DispatchServlet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response)
+/*	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			System.out.println("99999");
 			System.out.println("10000");
 		    System.out.println(request);
 
-	}
+	}*/
 
-/*	@Override
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doGet(req, resp);
-		System.out.println("99999");
+		System.out.println("1000");
 	}
-*/
+
 }
