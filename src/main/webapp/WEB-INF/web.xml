@@ -5,19 +5,19 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>DispatchServlet</servlet-name>
+  	<servlet-name>CustomDispatchSeverlet</servlet-name>
   	<display-name>DispatchServlet</display-name>
   	<description></description>
-  	<servlet-class>com.pwc.springMVC.servlet.DispatchServlet</servlet-class>
+  	<servlet-class>com.pwc.springMVC.servlet.CustomDispatchSeverlet</servlet-class>
   	<init-param>
   		<param-name>basePackage</param-name>
   		<param-value>com.pwc.springMVC</param-value>
   		<description></description>
   	</init-param>
-  	<load-on-startup>-1</load-on-startup>
+  	<load-on-startup>1</load-on-startup> 
   </servlet>
   <servlet-mapping>
-  	<servlet-name>DispatchServlet</servlet-name>
+  	<servlet-name>CustomDispatchSeverlet</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
 </web-app>

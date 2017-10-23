@@ -5,8 +5,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Scanner;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,30 +16,28 @@ import com.pwc.springMVC.annotation.RequestMapping;
 import com.pwc.springMVC.util.ClassScanner;
 
 /**
- * Servlet implementation class DispatchServlet
+ * Servlet implementation class DispatchSeverlet
  */
-// for below's annotation information can be config into web.xml as well.
-// @WebServlet(urlPatterns= {"*.do"},initParams= {@WebInitParam(name =
-// "basePackage",value="com.pwc.springMVC")})
-public class DispatchServlet extends HttpServlet {
+/*@WebServlet(
+		urlPatterns = { "/severletTesting" }, 
+		initParams = { 
+				@WebInitParam(name = "basePackage", value = "com.pwc.springMVC", description = "scanner URL")
+		})*/
+public class CustomDispatchSeverlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	private Map<String, Object> controllers = new HashMap<String, Object>();
 	private Map<String, Method> methods = new HashMap<String, Method>();
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public DispatchServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * Default constructor. 
+     */
+    public CustomDispatchSeverlet() {
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-
 		Map<String, Class<?>> results = new HashMap<String, Class<?>>();
 		results = ClassScanner.scannerClass(config.getInitParameter("basePackage"));
 
@@ -81,35 +77,16 @@ public class DispatchServlet extends HttpServlet {
 				}
 			}
 			
-			System.out.println("8888");
 
 		}
+		
 	}
-
-	/**
-	 * @see Servlet#destroy()
-	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-/*	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-			System.out.println("99999");
-			System.out.println("10000");
-		    System.out.println(request);
-
-	}*/
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		super.doGet(req, resp);
-		System.out.println("1000");
+		System.out.println(req.getRequestURI());
+		super.service(req, resp);
 	}
 
 }
